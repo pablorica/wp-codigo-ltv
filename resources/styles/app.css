@@ -1,0 +1,10 @@
+@import "tailwindcss/base";
+/*@tailwind components; */
+@import 'common/fonts';
+@import 'common/custom';
+
+@tailwind components;
+@tailwind utilities;
+
+
+

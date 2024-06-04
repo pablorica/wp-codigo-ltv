@@ -1,0 +1,52 @@
+
+@import 'common/fonts';
+@import 'common/custom';
+
+
+.editor-canvas__iframe,
+.editor-styles-wrapper {
+    @apply !p-8;
+}
+
+/* Fixes Gutenberg's cover block color picker. */
+.components-circular-option-picker__option {
+	border-radius: 50%;
+}
+
+/* Matches the page title font weight. */
+.editor-post-title .editor-post-title__input{
+	@apply h1;
+}
+
+/* Block group outlined */
+.wp-block-group {
+    box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.15);
+    margin-bottom: 10px !important;
+    
+}
+.wp-block-group .wp-block-group {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    margin-bottom: 0 !important;
+    box-shadow: none;
+}
+.wp-block {
+    border: 1px solid transparent;
+}
+.wp-block:hover {
+    border-color: red;
+    
+}
+
+.logo-img {
+    width: 100%;
+}
+.logo-img  svg {
+    width: 100%;
+    
+}
+
+.wp-block-separator {
+    background-color: #ececec;
+    border-color: black;
+}
