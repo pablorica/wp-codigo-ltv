@@ -33,7 +33,7 @@ export default async (app) => {
    * @see {@link https://bud.js.org/docs/bud.setProxyUrl}
    * @see {@link https://bud.js.org/docs/bud.watch}
    */
-  
+
   /*
   app
     .setUrl('http://localhost:3000')
@@ -42,7 +42,7 @@ export default async (app) => {
 */
   app
     .setUrl('http://localhost:3000')
-    .setProxyUrl('https://wordpress.localhost')
+    .setProxyUrl('https://talentstudio.localhost')
     .watch([
         `resources/views`,
         `resources/scripts`,
@@ -86,4 +86,17 @@ export default async (app) => {
     .useTailwindColors()
     .useTailwindFontFamily()
     .useTailwindFontSize();
+
+  /**
+   * Vue configuration
+   *
+   * @see {@link https://bud.js.org/extensions/bud-vue}
+   * @see {@link https://discourse.roots.io/t/once-i-mount-vue-to-app-content-disappears/23602}
+   * @see {@link https://link.vuejs.org/feature-flags}
+   */
+  app.vue.setRuntimeOnly(false);
+  app.define({
+    __VUE_OPTIONS_API__: true,
+    __VUE_PROD_DEVTOOLS__: false,
+  });
 };

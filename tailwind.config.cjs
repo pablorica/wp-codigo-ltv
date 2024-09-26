@@ -22,7 +22,7 @@ module.exports = {
         black:     '#000',
         blue:      '#2A7DE1',
         orange:    '#FF6B00',
-        pink:      '#F97FB5', 
+        pink:      '#F97FB5',
         white:     '#fff',
         yellow:    '#FFB71B',
         // Neutrals: neutral colors, with a default fallback if you don't need shades. Always set a DEFAULT when you use shades.
@@ -95,7 +95,7 @@ module.exports = {
       // hairline: 100,
       // thin: 200,
       // light: 300,
-      normal: 400, 
+      normal: 400,
       // medium: 500,
       // semibold: 600,
       bold: 700,
@@ -105,12 +105,12 @@ module.exports = {
     fontSize: {
         sm: '0.8rem',
         base: '1rem', // 20px
-        xl: '1.25rem', // 25px
+        'xl': '1.25rem', // 25px
         '2xl': '1.5rem', // 30px
         '3xl': '1.875rem', // 37.5px
         '4xl': '2.25rem', // 45px
         '5xl': '3rem', // 60px
-        '6xl': '3.75rem', // 75px 
+        '6xl': '3.75rem', // 75px
         '7xl': '4.5rem', // 90px
         '8xl': '6rem', // 120px
         '9xl': '8rem', // 160 px
@@ -127,8 +127,8 @@ module.exports = {
     },
     lineHeight: { //leading
         none: '1',
-        tight: '1.25', 
-        snug: '1.375',      
+        tight: '1.25',
+        snug: '1.375',
     }
   },
   plugins: [
@@ -226,7 +226,7 @@ module.exports = {
     }),
     // Custom variants for this particular site.
     plugin(function ({ addVariant }) {
-        // Instead of hard-coded px use sm, md, lg breakpoints value from config. 
+        // Instead of hard-coded px use sm, md, lg breakpoints value from config.
         addVariant('mobile-only', "@media screen and (max-width: calc(theme('screens.sm') - 1px) ) ");
         addVariant('tablet-only', "@media screen and (min-width: theme('screens.sm')) and (max-width: calc(theme('screens.lg') - 1px) )");
         addVariant('mbtb-only', "@media screen and (max-width: calc(theme('screens.lg') - 1px) )");
