@@ -2,14 +2,51 @@
 A clean slate Wordpress application for wordpress.
 Based in [sage](https://github.com/roots/sage?tab=readme-ov-file) and in [Nextly](https://github.com/web3templates/nextly-template)
 
-[![version](https://img.shields.io/badge/version-0.0.8-yellow.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.1.0-yellow.svg)](https://semver.org)
 
 ## Installation
 
-
 ### Go to [root_folder] and clone the repository
 
-    git clone https://github.com/pablorica/wp-codigo-ltv
+    git clone https://github.com/pablorica/hmo
+    Cloning into 'hmo'...
+    remote: Enumerating objects: 182, done.
+    remote: Counting objects: 100% (182/182), done.
+    remote: Compressing objects: 100% (118/118), done.
+    remote: Total 182 (delta 53), reused 165 (delta 40), pack-reused 0
+    Receiving objects: 100% (182/182), 578.41 KiB | 16.53 MiB/s, done.
+    Resolving deltas: 100% (53/53), done.
+
+### Update bud.config.js with your local dev URL
+
+    app.setPublicPath('../');
+    ...
+    app
+	    .setUrl('http://localhost:3000')
+	    .setProxyUrl('https://hmo.localhost')
+	    .watch([
+	    `resources/views`,
+	    `resources/scripts`,
+	    `resources/css`,
+    ]);
+
+### VUE 3
+
+The extension is pre-configured to support Vue 3 single file components (runtime only).
+
+You can disable the `runtimeOnly` default by adding the following to your `bud.config.js` file:
+
+    app.vue.setRuntimeOnly(false);
+
+The `esm-bundler` builds of Vue expose global feature flags `__VUE_OPTIONS_API__` and `__VUE_PROD_DEVTOOLS__` , they must to be defined.
+You may want to enable the options API and disable the devtools:
+
+    app.define({
+        __VUE_OPTIONS_API__: true,
+        __VUE_PROD_DEVTOOLS__: false,
+    });
+
+[Read more](https://bud.js.org/extensions/bud-vue) about setting up Vue in Sage.
 
 ### Compile files
 
@@ -65,46 +102,127 @@ Once installed, try again:
 ```$ yarn install```
 
 
+## Gutenberg Blocks
+
+The `@roots/bud-preset-wordpress` package comes with an editor integration. This library adds support for registering *blocks*, *filters*, *formats*, *styles*, *variations* and *plugins*.
+
+All modules registered with this API are registered in production and development. In development additional hot module reloading support is added.
+
+### Adding support to your application
+
+There are two steps:
+
+- Making the root registration call for a given type or types.
+- Adding modules to your application
+
+In general, the above steps are the same for working with any of the supported APIs.
+
+#### Making the root registration call
+
+Open `resources/scripts/editor.js` and write the call `roots.register.[type]` , supplying the root directory where registrables are found.
+
+For example, to register blocks in the application, we must add this call:
+
+    roots.register.blocks('@scripts/blocks')
+
+    /** Don't forget to accept any module updates! */
+    if (import.meta.webpackHot) {
+    import.meta.webpackHot.accept(console.error)
+    }
+
+
+#### Adding modules to the application
+
+`bud.js` will look for modules in the directory indicated in the root registration call. Modules are named like `*.[type].[ext]`.
+
+The module should export the required settings and the name of the entity.
+
+Modules can be created using either *default exports* or *named exports*. As a general rule, we will use default exports whenever possible.
+
+For example, to add a block variation in the Group block and add a Grid css feature, we would create a file `grid.variation.js` in the `resources/scripts/variations` directory:
+
+    export default {
+        block: `core/group`,
+        name: 'group-grid',
+        title: `Grid`,
+        icon: 'grid-view',
+        description: `Arrange blocks in a grid.`,
+        attributes: {
+            layout: {
+                type: 'grid' 
+            }
+        },
+        scope: [ 'block', 'inserter', 'transform' ],
+        isActive: (blockAttributes) => blockAttributes.layout?.type === 'grid',
+    }
+
+#### Advantages of using this library
+
+Without this library, if you have modified the content of a block you are developing in the editor and then make changes to a block's code that cause it to render differently, WordPress may mark the block as invalid.
+
+This library intercepts the module update and caches the state of the block outside of WordPress' state tree. It then completely unregisters the block and then re-registers it. If the block was selected before the module update, it also deselects and reselects it.
+
+WordPress is now looking at a different situation: a newly registered block with newly registered state. There is no discrepency and so the block is not flagged as invalid.
+
+This library also provides a more declarative way of registering modules with WordPress than the default API, and is less prone to understandable errors importing the wrong registration functions, etc.
+
+
 ### Install required plugins (ACF)
 
 Download the plugins folder from the staging server and copy it to the local installation.
 
-[Plugins](https://wordpress.codigo.co.uk/plugins.tar.gz)
+[Plugins](https://hmo.codigo.co.uk/plugins.tar.gz)
 
 ### Activate ACF and then the Codigo theme in the CMS
 
-### Download the assets folder from the staging server and copy it to the local installation.
+### Media files
 
-[Uploads](https://wordpress.codigo.co.uk/2024.tar.gz)
+Some images can be found in `_images` folder
 
 ### Update the database
 
-- Download the database from the test server and replace it in the local installation
+- Copy the database from the **_database** folder and replace it in the local installation
 
-	[Database](https://wordpress.codigo.co.uk/20240604.wordpress.STAGING.sql.gz)
+```bash
+    cd wp-content/themes/wp-codigo-ltv/_database
+    mysql -u root -p talentstudio < talentstudio.sql
+    Enter password: root
+```
 
-	`mysql -u root -p wp_site < 20240603.wordpress.LOCAL.sql`
-	
-- Change db prefix using WP_CLI
-	```
-	wp package install iandunn/wp-cli-rename-db-prefix --allow-root
-	wp rename-db-prefix 'wpsite_' --dry-run --allow-root
-	## If the results are ok, remove the flag '--dry-run'
-	wp rename-db-prefix 'wpsite_' --allow-root
-	Warning: Use this at your own risk. If something goes wrong, it could break your site.
-	Before running this, make sure to back up your `wp-config.php` file and run `wp db export`.
-	Are you sure you want to rename wordpress.localhost's database prefix from `wp_` to `wpsite_`? [y/n]
-	Success: Successfully renamed database prefix.
-	```
+#### Find and replace using WP_CLI
 
-- Find and replace using WP_CLI (wordpress.localhost is the local domain)
+Go to the web root folder and run:
 
-	```
-	wp search-replace 'wordpress.localhost' 'wordpress.codigo.co.uk' --dry-run --allow-root --all-tables
-	If the results are ok, remove the flag '--dry-run'
-	wp search-replace 'wordpress.localhost' 'wordpress.codigo.co.uk' --allow-root --all-tables
-	Success: Made 65 replacements.
-	```
+```bash
+    wp search-replace 'talentstudio.codigo.co.uk' 'talentstudio.localhost' --dry-run --allow-root --all-tables
+    ## If the results are ok, remove the flag '--dry-run'
+    wp search-replace 'talentstudio.codigo.co.uk' 'talentstudio.localhost' --allow-root --all-tables
+    ---> Success: Made 705 replacements.
+```
+
+Change database prefix using WP-CLI (if necessary)
+ 
+[WP-CLI Rename Database Prefix](https://github.com/iandunn/wp-cli-rename-db-prefix) is an add-on to WP_CLI that allows you to change the database prefix.
+
+  
+```bash
+    wp package install iandunn/wp-cli-rename-db-prefix --allow-root`
+    wp rename-db-prefix 'hmosite_' --dry-run --allow-root`
+    ## If the results are ok, remove the flag '--dry-run'
+    wp rename-db-prefix 'hmosite_' --allow-root`
+    *Warning: Use this at your own risk. If something goes wrong, it could break your site.
+    Before running this, make sure to back up your `wp-config.php` file and run `wp db export`.
+    Are you sure you want to rename hmo.localhost's database prefix from `wp_` to `hmosite_`? [y/n]
+    Success: Successfully renamed database prefix.*
+```
+
+#### Create Database Backup
+
+```bash
+    cd wp-content/themes/wp-codigo-ltv/_database
+    mysqldump -u root -proot talentstudio | gzip > wp-codigo-ltv.sql.gz
+```
+
 
 
 
@@ -366,33 +484,11 @@ This will create `src/Fields/Example.php` which is where you will create and man
 
 Copyright 2023 Codigo Wordpress Theme released under the [MIT](https://github.com/pablorica/wp-codigo-ltv/blob/main/LICENSE) license.
 
+
 ## Versioning
 
 We use [SemVer](https://semver.org/) for versioning. For the versions available, [list of tags can be found in this page](https://github.com/pablorica/wordpress_codigo_theme/tags).
 
 ### Changelog
 
-    0.0.8
-        Update screenshot.png
-
-    0.0.7
-        Install Sage Directives for use with Sage 10.
-
-    0.0.6
-        Install ACF Composer to manage ACF 
-
-    0.0.5
-        Adding ACF functions
-
-    0.0.4
-        Adding Nextly Template files
-
-    0.0.3
-        Setting Up Tailwind
-        Setting Up Bud
-
-    0.0.2
-        Installing Sage
-
-    0.0.1
-        Installing Wordpress
+[CHANGELOG.md](https://github.com/pablorica/wordpress_codigo_theme/blob/main/CHANGELOG.md)
