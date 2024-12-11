@@ -4,12 +4,14 @@
 --}}
 
 <!-- /codigo/resources/views/partials/page-header.blade.php -->
-<div class="page-header 
+<div class="page-header
     @option('layout_container')
 ">
-   @hasfield('layout_hide_title')
-   @else 
-    <h1>{!! $title !!}</h1>
-    @endfield
+  @if( function_exists('get_field') )
+    @if(get_field('layout_hide_title'))
+    @else
+      <h1>{!! $title !!}</h1>
+    @endif
+  @endif
 </div>
 <!-- End/codigo/resources/views/partials/page-header.blade.php -->
