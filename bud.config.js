@@ -42,7 +42,7 @@ export default async (app) => {
 */
   app
     .setUrl('http://localhost:3000')
-    .setProxyUrl('https://sparemytime.localhost')
+    .setProxyUrl('https://canvascareers.localhost')
     .watch([
         `resources/views`,
         `resources/scripts`,
