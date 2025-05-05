@@ -1,0 +1,41 @@
+/*
+* CSS for heading block styles defined in resources/scripts/styles/heading.basic-sans.style.js
+*/
+
+h1,h2,h3,h4,h5,h6 {
+  &.is-style-basic-sans {
+    @apply font-sans;
+  }
+}
+
+h2 {
+  &.is-style-basic-sans {
+    @apply lg:text-4lg;
+  }
+}
+
+.hero-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  & > * {
+    @media (min-width: theme("screens.md")) {
+      max-width: 90%;
+    }
+    @media (min-width: theme("screens.3xl")) {
+      width: 70%;
+      max-width: 580px
+    }
+  }
+  h2 {
+    font-size: 48px;
+    line-height: 1.2;
+    @media (min-width: theme("screens.md")) {
+      font-size: 52px;
+    }
+    @media (min-width: theme("screens.3xl")) {
+      font-size: 56px;
+    }
+  }
+
+}

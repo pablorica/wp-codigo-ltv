@@ -1,0 +1,28 @@
+/*
+* CSS for columns block
+*/
+
+
+.wp-block-columns {
+  margin:0;
+  &:not(.is-not-stacked-on-mobile) {
+    @media (max-width: calc(theme("screens.lg") - 1px)) {
+      flex-wrap: wrap !important;
+      & > .wp-block-column {
+        flex-basis: 100% !important;
+      }
+    }
+  }
+  &.is-style-no-gap {
+    gap: 0 !important;
+  }
+}
+
+.wp-block-column {
+  &.has-background {
+    border-radius: 10px;
+  }
+  &.is-style-line-top {
+    border-top: 1px solid theme("colors.black");
+  }
+}

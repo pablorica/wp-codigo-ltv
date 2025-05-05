@@ -14,15 +14,15 @@ class LayoutOptions extends Field
     public function fields(): array
     {
         $layoutOptions = Builder::make(
-            'layout_options',  
-            ['position' => 'side'] 
+            'layout_options',
+            ['position' => 'side']
         );
 
         $layoutOptions
             ->setLocation('post_type', '==', 'page')
             ->or('post_type', '==', 'post');
-        
-        
+
+
         $layoutOptions
             ->addTrueFalse('layout_hide_title', [
                 'label' => 'Hide Title',
@@ -39,6 +39,30 @@ class LayoutOptions extends Field
                 'ui' => 0,
                 'ui_on_text' => '',
                 'ui_off_text' => '',
+            ])
+            ->addSelect('layout_container', [
+                'label' => 'Container',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'choices' => [
+                    'container' => 'Container',
+                    'container-fluid' => 'Container Fluid',
+                ],
+                'default_value' => [
+                    0 => 'container',
+                ],
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 0,
+                'return_format' => 'value',
+                'ajax' => 0,
+                'placeholder' => '',
             ]);
 
         return $layoutOptions->build();

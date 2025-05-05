@@ -1,0 +1,89 @@
+.flatpickr-calendar {
+  width: 100%;
+  border-top: 1px solid var(--color-green);
+  border-radius: 0;
+
+  .flatpickr-months {
+    border: 1px solid var(--color-green);
+    border-top: 0;
+    padding: 10px;
+    height: auto;
+
+    .flatpickr-prev-month,
+    .flatpickr-next-month {
+      top: 10px;
+
+      &:hover {
+        svg {
+          fill: var(--color-green);
+        }
+      }
+    }
+
+    .flatpickr-monthDropdown-months, .numInput {
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: .025rem;
+    }
+  }
+
+  .flatpickr-rContainer {
+    width: 100%;
+
+    .flatpickr-weekdays {
+      height: auto;
+
+      .flatpickr-weekdaycontainer {
+        border-right: 1px solid var(--color-green);
+        border-bottom: 1px solid var(--color-green);
+
+        .flatpickr-weekday {
+          border-left: 1px solid var(--color-green);
+          border-radius: 0;
+          padding: 10px 0;
+        }
+      }
+    }
+
+    .flatpickr-days {
+      width: 100%;
+      border-right: 1px solid var(--color-green);
+
+      .dayContainer {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+
+        .flatpickr-day {
+          border-left: 1px solid var(--color-green);
+          border-bottom: 1px solid var(--color-green);
+          border-radius: 0;
+          max-width: 100%;
+          height: auto;
+          padding: 8px;
+
+          &.today {
+            background: var(--color-green);
+            opacity: .5;
+            color: var(--color-white);
+          }
+
+          &.selected {
+            background: var(--color-green);
+            color: var(--color-white);
+            opacity: 1;
+          }
+
+          @media (max-width: calc(theme('screens.md') - 1px)) {
+            padding: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  ~ p .submit {
+    display: none;
+  }
+}

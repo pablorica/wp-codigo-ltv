@@ -1,0 +1,20 @@
+/*
+* CSS for buttons block
+*/
+
+
+.wp-block-button.is-style-outline .wp-block-button__link {
+  border-width: 1px !important;
+}
+
+.wp-element-button,
+.wp-block-button__link {
+  padding: 0.44rem 2.25rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .3s;
+  &:hover {
+    background-color: black !important;
+    color: white !important;
+  }
+}

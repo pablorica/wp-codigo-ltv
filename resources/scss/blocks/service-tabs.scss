@@ -1,0 +1,17 @@
+.service-tabs {
+  .tabs-controls {
+    button.active {
+      > span.absolute {
+        opacity: 100 !important;
+      }
+
+      color: var(--color-white);
+    }
+  }
+
+  .tabs-content {
+    .tab-content:not(.active) {
+      display: none;
+    }
+  }
+}

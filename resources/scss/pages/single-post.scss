@@ -1,0 +1,74 @@
+.single-post-content {
+  @apply text-xl;
+
+  max-width: 928px;
+
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2rem;
+  padding-bottom: 0;
+  @media (min-width: theme("screens.md")) {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+
+  p , ul, ol, li {
+    @apply text-lg;
+    line-height: 32px;
+    letter-spacing: 1.4px;
+  }
+  ol, ul {
+    list-style: inherit;
+    padding-left: 1.75rem;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    @apply font-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  blockquote {
+    margin-bottom: 1rem !important;
+  }
+  blockquote,
+  blockquote > * {
+    @apply font-serif;
+    font-style: italic;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 45px;
+    margin-bottom: 1rem;
+    @media (min-width: theme("screens.md")) {
+      margin-bottom: 2rem;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    p:last-of-type {
+      margin-bottom: 0 !important;
+    }
+    cite {
+      @apply font-sans;
+      font-size: 20px;
+      font-weight: 600;
+      font-style: normal;
+      display: block;
+      margin-top: 0;
+      text-transform: uppercase;
+    }
+  }
+  figure {
+    margin-bottom: 2rem;
+  }
+
+  .sidebar-post {
+    right: calc(100% + 90px);
+
+    @media screen and (max-width: 1780px){
+      right: calc(100% + 70px);
+    }
+  }
+}

@@ -18,24 +18,9 @@ class Post extends Composer
     ];
 
     /**
-     * Data to be passed to view before rendering, but after merging.
-     *
-     * @return array
+     * Retrieve the post title.
      */
-    public function override()
-    {
-        return [
-            'title'          => $this->title(),
-            'layout_options' => $this->layout_options(),
-        ];
-    }
-
-    /**
-     * Returns the post title.
-     *
-     * @return string
-     */
-    public function title()
+    public function title(): string
     {
         if ($this->view->name() !== 'partials.page-header') {
             return get_the_title();
@@ -68,22 +53,15 @@ class Post extends Composer
         return get_the_title();
     }
 
-
     /**
-     * Returns the ACF layout options.
-     * Deprecated: Use the ACF Builder instead.
-     *
-     * @return array
+     * Retrieve the pagination links.
      */
-    public function layout_options() {
-        $options = [
-            'container'  => 'container',
-            'hide_title' => false,
-        ];
-        if ( function_exists( 'get_field' ) ) { 
-            $options['container']  =  get_field('layout_container');
-            $options['hide_title'] = get_field('layout_hide_title');
-        }
-        return $options;
+    public function pagination(): string
+    {
+        return wp_link_pages([
+            'echo' => 0,
+            'before' => '<p>'.__('Pages:', 'sage'),
+            'after' => '</p>',
+        ]);
     }
 }

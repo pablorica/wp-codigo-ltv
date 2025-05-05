@@ -1,0 +1,7 @@
+.blog-insights {
+  @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
+    h3.post-title {
+      @apply text-base lg:text-2xl;
+    }
+  }
+}

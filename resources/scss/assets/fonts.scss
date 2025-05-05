@@ -1,0 +1,131 @@
+/* '@fonts/*' is defined in codigo/jsconfig.json */
+
+@font-face {
+  font-family: 'Contralto';
+  src: url('~@fonts/Contralto/ContraltoSmall-Light.eot');
+  src: url('~@fonts/Contralto/ContraltoSmall-Light.eot?#iefix') format('embedded-opentype'),
+        url('~@fonts/Contralto/ContraltoSmall-Light.woff2') format('woff2'),
+        url('~@fonts/Contralto/ContraltoSmall-Light.woff') format('woff'),
+        url('~@fonts/Contralto/ContraltoSmall-Light.ttf') format('truetype'),
+        url('~@fonts/Contralto/ContraltoSmall-Light.svg#ContraltoSmall-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  letter-spacing: -0.02em;
+}
+@font-face {
+  font-family: 'Contralto';
+  src: url('~@fonts/Contralto/ContraltoSmall-Regular.eot');
+  src: url('~@fonts/Contralto/ContraltoSmall-Regular.eot?#iefix') format('embedded-opentype'),
+  url('~@fonts/Contralto/ContraltoSmall-Regular.woff2') format('woff2'),
+  url('~@fonts/Contralto/ContraltoSmall-Regular.woff') format('woff'),
+  url('~@fonts/Contralto/ContraltoSmall-Regular.ttf') format('truetype'),
+  url('~@fonts/Contralto/ContraltoSmall-Regular.svg#ContraltoSmall-Regular') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Basic Sans';
+  src: url('~@fonts/BasicSans/BasicSans-Light.eot');
+  src: url('~@fonts/BasicSans/BasicSans-Light.eot?#iefix') format('embedded-opentype'),
+    url('~@fonts/BasicSans/BasicSans-Light.woff2') format('woff2'),
+    url('~@fonts/BasicSans/BasicSans-Light.woff') format('woff'),
+    url('~@fonts/BasicSans/BasicSans-Light.ttf') format('truetype'),
+    url('~@fonts/BasicSans/BasicSans-Light.svg#BBasicSans-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Basic Sans';
+  src: url('~@fonts/BasicSans/BasicSans-LightIt.eot');
+  src: url('~@fonts/BasicSans/BasicSans-LightIt.eot?#iefix') format('embedded-opentype'),
+    url('~@fonts/BasicSans/BasicSans-LightIt.woff2') format('woff2'),
+    url('~@fonts/BasicSans/BasicSans-LightIt.woff') format('woff'),
+    url('~@fonts/BasicSans/BasicSans-LightIt.ttf') format('truetype'),
+    url('~@fonts/BasicSans/BasicSans-LightIt.svg#BasicSans-LightIt') format('svg');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Basic Sans';
+  src: url('~@fonts/BasicSans/BasicSans-Regular.eot');
+  src: url('~@fonts/BasicSans/BasicSans-Regular.eot?#iefix') format('embedded-opentype'),
+    url('~@fonts/BasicSans/BasicSans-Regular.woff2') format('woff2'),
+    url('~@fonts/BasicSans/BasicSans-Regular.woff') format('woff'),
+    url('~@fonts/BasicSans/BasicSans-Regular.ttf') format('truetype'),
+    url('~@fonts/BasicSans/BasicSans-Regular.svg#BasicSans-Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Basic Sans';
+  src: url('~@fonts/BasicSans/BasicSans-RegularIt.eot');
+  src: url('~@fonts/BasicSans/BasicSans-RegularIt.eot?#iefix') format('embedded-opentype'),
+    url('~@fonts/BasicSans/BasicSans-RegularIt.woff2') format('woff2'),
+    url('~@fonts/BasicSans/BasicSans-RegularIt.woff') format('woff'),
+    url('~@fonts/BasicSans/BasicSans-RegularIt.ttf') format('truetype'),
+    url('~@fonts/BasicSans/BasicSans-RegularIt.svg#BasicSans-RegularIt') format('svg');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Basic Sans';
+  src: url('~@fonts/BasicSans/BasicSans-SemiBold.eot');
+  src: url('~@fonts/BasicSans/BasicSans-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('~@fonts/BasicSans/BasicSans-SemiBold.woff2') format('woff2'),
+    url('~@fonts/BasicSans/BasicSans-SemiBold.woff') format('woff'),
+    url('~@fonts/BasicSans/BasicSans-SemiBold.ttf') format('truetype'),
+    url('~@fonts/BasicSans/BasicSans-SemiBold.svg#BasicSans-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Basic Sans';
+  src: url('~@fonts/BasicSans/BasicSans-SemiBoldIt.eot');
+  src: url('~@fonts/BasicSans/BasicSans-SemiBoldIt.eot?#iefix') format('embedded-opentype'),
+    url('~@fonts/BasicSans/BasicSans-SemiBoldIt.woff2') format('woff2'),
+    url('~@fonts/BasicSans/BasicSans-SemiBoldIt.woff') format('woff'),
+    url('~@fonts/BasicSans/BasicSans-SemiBoldIt.ttf') format('truetype'),
+    url('~@fonts/BasicSans/BasicSans-SemiBoldIt.svg#BasicSans-SemiBoldIt') format('svg');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Basic Sans';
+  src: url('~@fonts/BasicSans/BasicSans-Bold.eot');
+  src: url('~@fonts/BasicSans/BasicSans-Bold.eot?#iefix') format('embedded-opentype'),
+    url('~@fonts/BasicSans/BasicSans-Bold.woff2') format('woff2'),
+    url('~@fonts/BasicSans/BasicSans-Bold.woff') format('woff'),
+    url('~@fonts/BasicSans/BasicSans-Bold.ttf') format('truetype'),
+    url('~@fonts/BasicSans/BasicSans-Bold.svg#BasicSans-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Basic Sans';
+  src: url('~@fonts/BasicSans/BasicSans-BoldIt.eot');
+  src: url('~@fonts/BasicSans/BasicSans-BoldIt.eot?#iefix') format('embedded-opentype'),
+    url('~@fonts/BasicSans/BasicSans-BoldIt.woff2') format('woff2'),
+    url('~@fonts/BasicSans/BasicSans-BoldIt.woff') format('woff'),
+    url('~@fonts/BasicSans/BasicSans-BoldIt.ttf') format('truetype'),
+    url('~@fonts/BasicSans/BasicSans-BoldIt.svg#BasicSans-BoldIt') format('svg');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+

@@ -1,0 +1,45 @@
+/*
+* CSS for cover block styles defined in resources/scripts/styles/cover.style.js
+*/
+
+.wp-block-cover {
+  &.is-style-has-left-image {
+    .wp-block-cover__image-background {
+      z-index: 1;
+      width: 12%;
+      max-width: 270px;
+      opacity: .7;
+      background-position: 100% 50% !important;
+      background-size: 100%;
+
+      @media screen and (max-width: calc(theme("screens.2xl") - 1px)) {
+        max-width: 6%;
+      }
+
+      @media screen and (max-width: calc(theme("screens.xl") - 1px)) {
+        display: none;
+      }
+    }
+  }
+
+  &.is-style-has-right-image {
+    .wp-block-cover__image-background {
+      z-index: 1;
+      width: 12%;
+      max-width: 270px;
+      opacity: .7;
+      background-position: 100% 50% !important;
+      background-size: 100%;
+      left: unset;
+      right: 0;
+
+      @media screen and (max-width: calc(theme("screens.2xl") - 1px)) {
+        max-width: 6%;
+      }
+
+      @media screen and (max-width: calc(theme("screens.xl") - 1px)) {
+        display: none;
+      }
+    }
+  }
+}

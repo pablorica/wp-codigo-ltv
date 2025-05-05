@@ -1,0 +1,88 @@
+.sign-up-block {
+  .form-section {
+    max-width: 500px;
+    margin: 0 auto;
+
+    > div {
+      position: relative;
+    }
+
+    .wpcf7-spinner, br {
+      display: none;
+    }
+
+    input[type=email] {
+      border: none;
+      background: var(--color-white);
+      color: var(--color-green);
+      font-size: 0.8rem;
+      font-weight: normal;
+      margin: 0;
+      width: 100%;
+      outline: none;
+      border-radius: 0;
+      padding: 14px 24px;
+      max-width: 500px;
+
+      &::placeholder {
+        color: var(--color-green);
+        text-transform: uppercase;
+        font-style: italic;
+      }
+    }
+
+    .wpcf7-not-valid-tip {
+      display: none;
+    }
+
+    label.submit {
+      position: absolute;
+      right: 0;
+      top: 8px;
+
+      input {
+        display: none;
+      }
+
+      &:after {
+        margin-right: 10px;
+        margin-top: 2px;
+        content: "";
+        width: 35px;
+        height: 30px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAYAAAB2+A+pAAAAAXNSR0IArs4c6QAAAmhJREFUSEvFlkFu00AUhv9xjesdvQG5AdkSC5EuHRa4J8CcgLCrkkgNUhJ1V/cElBO0XRAvC0IOS8gN2hs0O9ekHvRcT+RMXHtsWtWrseLMN2/e//73GJ7oYU/ExQb44OJ051Y3m+JAo9f2d7He/+U39CUa9L7UcXn4yr6se/DciPuB/wfAS9qUMb43anXOaD346be5hosUdqVHYfPz7t51HXguuBd8azJov9MNF3oUNgSgF0w9BvaRfuPgxxOr030wMG3Un0274OwoiRr4MbLsNq0pFUvDpOvfuJEqBygUV3/mn4DjfbIhw9dxy3ZpSbneikHpeA5gwRG3J9Zbeld+CsFydBz4MLHsk5x8V4aXllMRvBf4LgO+CC1UibwUnJfXrKjqwpXAeXDKuX4Tdkntm3B0RUruS7oyOBcOzDlil4SVwr1UcKWlVgm8gm+b3krtwAKMD8etjpfWP5nNizTS+a0GJ8/hKoPF1ckRUq1vRaGT2KlhkvLfCdExwBtZ9jB77bXBg8AfcuBAbEaCexbdDP8aRoNBI3BiMFTnjHFX2K74vjI4aSKGecaBN6uNYzjUTAazqcM5IygZCz3nehS6eX5eCSznUFxvjrIBxj9R3v9b1SmUPPoumoyFrlmrooUqRSxDs9YpQa84YkfFt0vBUkNAFioZx1yPwrZqf67dJGS3yvZslRZV3BYDn8wgqcd1f04GBZHvyp3pTiL3PFKdno8tOzGHRx0EpNFnbbbKiulBR580IpomEr9lMXbFpJkaxKnw4bFlr6ZRlbwWWmZ2vI21+DpbGo8+3lY9fZ3vS+u4zqYq//kH/+BkLEkgeWQAAAAASUVORK5CYII=) no-repeat;
+        background-size: contain;
+        display: block;
+        cursor: pointer;
+      }
+    }
+
+    .wpcf7-form .wpcf7-acceptance {
+      max-width: 450px;
+      margin: 30px auto 0;
+
+      label {
+        span.wpcf7-list-item-label {
+          text-align: left;
+          color: var(--color-midnight);
+          font-style: normal;
+          font-weight: normal;
+          align-items: flex-start;
+
+          &::before {
+            background: var(--color-white);
+          }
+        }
+
+        input[type=checkbox]:checked + span.wpcf7-list-item-label::after {
+          color: var(--color-green);
+          top: 2px;
+        }
+
+        input[type=checkbox]:not(:checked) + span.wpcf7-list-item-label::after {
+          display: none;
+        }
+      }
+    }
+  }
+}

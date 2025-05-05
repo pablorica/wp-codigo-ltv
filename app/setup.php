@@ -1,36 +1,72 @@
 <?php
+
 /**
  * Codigo Theme setup
  * php version 8.0.0
  *
  * @package    Codigo
  * @author     Pablo Rica <pablo@codigo.co.uk>
- * @license    MIT 
- * @since      Codigo 0.0.4
+ * @license    MIT
+ * @since      Codigo 0.1.0
  */
-
 
 namespace App;
 
-use function Roots\bundle;
+use Illuminate\Support\Facades\Vite;
 
 /**
- * Register the theme assets.
+ * Inject styles into the block editor.
+ *
+ * @return array
+ */
+add_filter('block_editor_settings_all', function ($settings) {
+    $editorCss = Vite::asset('resources/css/editor.css');
+    $editorScss = Vite::asset('resources/scss/editor.scss');
+
+    $settings['styles'][] = [
+        'css' => "@import url('{$editorCss}')",
+    ];
+
+    $settings['styles'][] = [
+        'css' => "@import url('{$editorScss}')",
+    ];
+
+    return $settings;
+});
+
+/**
+ * Inject scripts into the block editor.
  *
  * @return void
  */
-add_action('wp_enqueue_scripts', function () {
-    bundle('app')->enqueue();
-}, 100);
+add_filter('admin_head', function () {
+    if (! get_current_screen()?->is_block_editor()) {
+        return;
+    }
+
+    $dependencies = json_decode(Vite::content('editor.deps.json'));
+
+    foreach ($dependencies as $dependency) {
+        if (! wp_script_is($dependency)) {
+            wp_enqueue_script($dependency);
+        }
+    }
+
+    echo Vite::withEntryPoints([
+        'resources/js/editor.js',
+    ])->toHtml();
+});
 
 /**
- * Register the theme assets with the block editor.
+ * Use the generated theme.json file.
  *
- * @return void
+ * @return string
  */
-add_action('enqueue_block_editor_assets', function () {
-    bundle('editor')->enqueue();
-}, 100);
+add_filter('theme_file_path', function ($path, $file) {
+    return $file === 'theme.json'
+        ? public_path('build/assets/theme.json')
+        : $path;
+}, 10, 2);
 
 /**
  * Register the initial theme setup.
@@ -38,18 +74,6 @@ add_action('enqueue_block_editor_assets', function () {
  * @return void
  */
 add_action('after_setup_theme', function () {
-    /**
-     * Enable features from the Soil plugin if activated.
-     *
-     * @link https://roots.io/plugins/soil/
-     */
-    add_theme_support('soil', [
-        'clean-up',
-        'nav-walker',
-        'nice-search',
-        'relative-urls',
-    ]);
-
     /**
      * Disable full-site editing support.
      *
@@ -142,29 +166,26 @@ add_action('widgets_init', function () {
 });
 
 
+/**
+ * Custom files to include
+ *
+ *
+ */
+$includes = array();
 
-// Array of files to include.
-$includes = array(
-	//'/codigo-extras.php',
-    //'/codigo-class-wp-bootstrap-navwalker.php',
-    //'/codigo-custom-post-types.php',
-    //'/codigo-rest-api.php',
-    //'/codigo-blocks.php',
-);
-
-if ( function_exists( 'get_field' ) ) { 
+if ( function_exists( 'get_field' ) ) {
 	$includes[] = '/codigo-acf.php';
 }
 
 if ( class_exists( 'WPSEO_Options' ) ) {
-	$includes[] = '/codigo-yoast-seo.php';
+	//$includes[] = '/codigo-yoast-seo.php';
 }
 
 if ( class_exists( 'Default_Admin_Color_Scheme' ) ) {
-	$includes[] = '/codigo-default-admin-color-scheme.php';
+	//$includes[] = '/codigo-default-admin-color-scheme.php';
 }
 
 // Include files.
 foreach ( $includes  as $file ) {
-	//require_once get_theme_file_path( 'inc' . $file );
+	require_once get_theme_file_path( 'app/Includes' . $file );
 }

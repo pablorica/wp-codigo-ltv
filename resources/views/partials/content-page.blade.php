@@ -7,10 +7,10 @@
 <div class="@option('layout_container')">
     @php(the_content())
 
-    {!! wp_link_pages([
-        'echo' => 0, 
-        'before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 
-        'after' => '</p></nav>'
-    ]) !!}
+    @if ($pagination())
+    <nav class="page-nav" aria-label="Page">
+      {!! $pagination !!}
+    </nav>
+  @endif
 </div>
 <!-- End /codigo/resources/views/partials/content-page.blade.php -->

@@ -15,6 +15,7 @@
         lg:justify-between
         nav-primary
         @option('header_layout_container')
+
         "
         aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}"
     >

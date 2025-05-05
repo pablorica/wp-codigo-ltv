@@ -1,0 +1,16 @@
+.members {
+  .member {
+    @media screen and (min-width: theme('screens.md')) and (max-width: calc(theme('screens.xl') - 1px)) {
+      &:nth-child(even) {
+        border-left: 0;
+      }
+    }
+
+    @media screen and (min-width: theme('screens.xl')) {
+      &:nth-child(3n+2) {
+        border-left: 0;
+        border-right: 0;
+      }
+    }
+  }
+}

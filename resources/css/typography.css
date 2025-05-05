@@ -1,0 +1,34 @@
+@layer base {
+
+    h1, .h1 {
+        @apply text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl;
+        @apply md:tracking-tighter;
+    }
+
+    h2, .h2 {
+        @apply text-2xl md:text-3xl 2xl:text-4xl;
+        @apply md:tracking-tight lg:tracking-tighter;
+    }
+
+    h3, .h3 {
+        @apply text-xl md:text-2xl xl:text-3xl;
+        @apply md:tracking-tight;
+    }
+
+    h4, .h4 {
+        @apply text-base md:text-xl tracking-tight;
+    }
+
+    h5, .h5 {
+        @apply text-sm md:text-md;
+    }
+
+    h6, .h6 {
+        @apply text-xs md:text-sm;
+    }
+
+    .text-sm,
+    .text-md {
+        @apply tracking-wide;
+    }
+}
